@@ -1,5 +1,8 @@
+import './style.css'
 import { InputBase } from '@mui/material';
+
 import React, {useState} from 'react';
+
 
 const Title = (props) => {
     const [open, setOpen] = useState(false);
@@ -9,12 +12,14 @@ const Title = (props) => {
         <div>
             {
                 open ?(
-                    <div>
-                        <InputBase value="Todo" />
+                    <div className={""}>
+                        <InputBase value="Todo" 
+                        onBlur={ () => setOpen(!open)}/>
                     </div>
                 ) : (
-                    <div>
-                        <h3 onClick={ () => setOpen(!open)}>To Do</h3>
+                    <div className={"editTitleContainer"}>
+                        <h3 onClick={ () => setOpen(!open)} className={"editTitle"}>To Do</h3>
+                        &#x2630;
                     </div>
                 )
             }

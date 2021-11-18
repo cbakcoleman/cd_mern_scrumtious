@@ -4,3 +4,15 @@
     margin-top: 1rem;
     background-color: lime;
 }
+.editTitle {
+    margin-left: 1rem;
+    flex-grow: 1;
+}
+.editTitleContainer {
+    margin: 1rem;
+    display: flex;
+}
+.input {
+    margin: 1rem;
+    background-color: lightsteelblue;
+}
