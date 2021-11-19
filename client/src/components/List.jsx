@@ -15,7 +15,7 @@ const List = ({list}) => {
         <div >
             <Card  className={"card "}>
                 <CssBaseline/>
-                <Title title={list.title}/>
+                <Title title={list.title} listId={list.id}/>
                 {list.tasks.map( (task) => {
                     return(
                         <Task key={task.id} task={task} />

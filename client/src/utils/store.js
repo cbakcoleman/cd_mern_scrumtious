@@ -1,15 +1,15 @@
 const tasks = [
     {
         id: "task-1",
-        content: "Finish this GOSH DARN assignment"
+        content: "Edit list title"
     },
     {
         id: "task-2",
-        content: "Figure out what I am doing"
+        content: "Complete tasks/Delete tasks, Lists"
     },
     {
         id: "task-3",
-        content: "Cry a lot"
+        content: "Connect to DB"
     }
 ];
 

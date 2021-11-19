@@ -1,11 +1,21 @@
 import './style.css'
 import { InputBase } from '@mui/material';
+import StoreApi from '../utils/StoreApi';
+import React, {useState, useContext} from 'react';
 
-import React, {useState} from 'react';
 
-
-const Title = ({title}) => {
+const Title = ({title, listId}) => {
     const [open, setOpen] = useState(false);
+    const [newTitle, setNewTitle] = useState(title);
+    const {updateListTitle} = useContext(StoreApi);
+
+    const handleOnChange = (e) => {
+        setNewTitle(e.target.value);
+    }
+    const handleBlur = () => {
+        updateListTitle(newTitle, listId);
+        setOpen(false);
+    }
 
 
     return (
@@ -13,9 +23,10 @@ const Title = ({title}) => {
             {
                 open ?(
                     <div className={"input"}>
-                        <InputBase value={title}
+                        <InputBase value={newTitle}
                         fullWidth
-                        onBlur={ () => setOpen(!open)}/>
+                        onBlur={ handleBlur}
+                        onChange={handleOnChange}/>
                     </div>
                 ) : (
                     <div className={"editTitleContainer"}>
