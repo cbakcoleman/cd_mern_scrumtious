@@ -9,7 +9,7 @@ const tasks = [
     },
     {
         id: "task-3",
-        content: "Connect to DB"
+        content: "Drag and drop tasks"
     }
 ];
 
