@@ -12,7 +12,7 @@ app.use(express.json(), express.urlencoded({extended: true}));
 // DATABASE CONNECTION LINK
 require("./config/mongoose.config")(DB);
 // CONNECT ROUTES
-require("./routes/Event.routes")(app);
+require("./routes/List.routes")(app);
 // CONNECT ROUTES
 require("./routes/Task.routes")(app);
 
