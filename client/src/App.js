@@ -91,6 +91,19 @@ const onDragEnd = (result) => {
       },
     };
     setData(newState);
+  } else {
+    sourceList.tasks.splice(source.index, 1);
+    destinationList.tasks.splice(destination.index, 0, draggingTask);
+
+    const newState = {
+      ...data,
+      lists: {
+        ...data.lists,
+        [sourceList.id] : sourceList,
+        [destinationList.id] : destinationList,
+      },
+    };
+    setData(newState);
   }
 }
 
