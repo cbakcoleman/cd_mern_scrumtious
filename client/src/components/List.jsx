@@ -18,12 +18,12 @@ const List = ({list}) => {
                 <Title title={list.title}/>
                 {list.tasks.map( (task) => {
                     return(
-                        <Task key={task.id} task={task}/>
+                        <Task key={task.id} task={task} />
                     )
                 })}
 
                 <div></div>
-                <InputContainer/>
+                <InputContainer listId={list.id}/>
             </Card>
         </div>
     )
