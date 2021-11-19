@@ -2,17 +2,32 @@
     width: 300px;
     margin-left: 1rem;
     margin-top: 1rem;
-    background-color: lime;
 }
+
 .editTitle {
     margin-left: 1rem;
     flex-grow: 1;
+    font-size:medium;
+    font-weight: bold;
 }
 .editTitleContainer {
     margin: 1rem;
     display: flex;
+    height: 50px;
 }
 .input {
     margin: 1rem;
-    background-color: lightsteelblue;
+    padding: 1px;
+    height: 50px;
+    text-align: center;
+}
+.task {
+    padding-bottom: 5px;
+    margin: 2px;
+    font-size:small;
+}
+.addTask {
+    padding-bottom: 5px;
+    font-size:small;
+    
 }

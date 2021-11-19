@@ -12,8 +12,10 @@ const Title = (props) => {
         <div>
             {
                 open ?(
-                    <div className={""}>
+                    <div className={"input"}>
                         <InputBase value="Todo" 
+                       
+                        fullWidth
                         onBlur={ () => setOpen(!open)}/>
                     </div>
                 ) : (
