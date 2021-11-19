@@ -31,3 +31,15 @@
     font-size:small;
     
 }
+.list {
+    width: 300px;
+
+    display: inline-flex;
+}
+.flex {
+    display: inline-flex;
+}
+.container {
+    display: inline-flex;
+
+}

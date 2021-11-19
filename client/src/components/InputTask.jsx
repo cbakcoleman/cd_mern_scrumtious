@@ -5,20 +5,24 @@ import StoreApi from '../utils/StoreApi';
 import axios from 'axios';
 import './style.css';
 
-const InputTask = ({setOpen, listId}) => {
+const InputTask = ({setOpen, listId, type}) => {
     const [content, setContent] = useState(null);
-    const {addNewTasks} = useContext(StoreApi);
+    const {addNewTasks, addNewLists} = useContext(StoreApi);
     
     const btnConfirm = () => {
-        addNewTasks(content, listId);
-        setContent("");
-        setOpen(false);
+        if (type === "task"){
+            addNewTasks(content, listId);
+            setContent("");
+            setOpen(false);
+        } else {
+            addNewLists(content);
+            setContent("");
+            setOpen(false);
+        }
     }
 
-    const handleBlur = () => {
-        setOpen(false);
-        setContent("");
-    }
+    
+
 
     return (
         <div>
@@ -26,16 +30,18 @@ const InputTask = ({setOpen, listId}) => {
                 <Card className={"input"}>
                     <InputBase 
                         onChange={ (e) => setContent(e.target.value)}
-                        onBlur={ handleBlur }
+                        onBlur={ () => setOpen(false) }
                         multiline 
                         fullWidth
-                        placeholder="Enter task"
+                        placeholder={type === "task" ? "Enter task":"Enter list title"}
                         value={content}
                     />
                 </Card>
             </div>
             <div >
-                <Button className={"button"} onClick={ btnConfirm }>Add Task</Button>
+                <Button className={"button"} onClick={ btnConfirm }>
+                    {type === "task" ? "Add Task": "Add List"}
+                </Button>
                 <IconButton >
                     <ClearIcon/>
                 </IconButton>

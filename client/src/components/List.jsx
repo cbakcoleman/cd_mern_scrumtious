@@ -13,7 +13,7 @@ const List = ({list}) => {
 
     return (
         <div >
-            <Card  className={"card"}>
+            <Card  className={"card "}>
                 <CssBaseline/>
                 <Title title={list.title}/>
                 {list.tasks.map( (task) => {
@@ -23,7 +23,7 @@ const List = ({list}) => {
                 })}
 
                 <div></div>
-                <InputContainer listId={list.id}/>
+                <InputContainer listId={list.id} type="task"/>
             </Card>
         </div>
     )
