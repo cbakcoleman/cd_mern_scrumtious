@@ -6,6 +6,7 @@ import {useEffect, useState} from 'react';
 import store from './utils/store';
 import StoreApi from './utils/StoreApi';
 import InputContainer from './components/InputContainer';
+import {DragDropContext, Droppable} from 'react-beautiful-dnd';
 
 function App() {
   const listStyle = {
@@ -66,20 +67,48 @@ const updateListTitle = (title, listId) => {
   setData(newState);
 }
 
+const onDragEnd = (result) => {
+  const {destination, source, draggableId} = result;
+  console.log("destination", destination, "source", source, "draggableId", draggableId)
+
+  if (!destination) {
+    return;
+  }
+  const sourceList = data.lists[source.droppableId];
+  const destinationList = data.lists[destination.droppableId]
+  const draggingTask = sourceList.tasks.filter(
+    (task) => task.id ===draggableId
+  )[0];
+
+  if (source.droppableId === destination.droppableId) {
+    sourceList.tasks.splice(source.index, 1);
+    destinationList.tasks.splice(destination.index, 0, draggingTask);
+    const newState = {
+      ...data,
+      lists: {
+        ...data.lists,
+        [sourceList.id]: destinationList
+      },
+    };
+    setData(newState);
+  }
+}
 
   return (
     <StoreApi.Provider value={{ addNewTasks, addNewLists, updateListTitle }}>
-      <div className="App container">
-        {data.listIds.map((listId) => {
-          const list = data.lists[listId];
-          return (
-            <List list={list} key={listId} />
-          )
-        })}
-        <div style={listStyle}>
-          <InputContainer type="list" style={listStyle} />
+      <DragDropContext onDragEnd={onDragEnd}>
+        <div className="App container">
+          {data.listIds.map((listId) => {
+            const list = data.lists[listId];
+            return (
+              <List list={list} key={listId} />
+            )
+          })}
+          <div style={listStyle}>
+            <InputContainer type="list" style={listStyle} />
+          </div>
         </div>
-      </div>
+      </DragDropContext>
     </StoreApi.Provider>
   );
 }
