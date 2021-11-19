@@ -8,7 +8,11 @@ const ListSchema = new mongoose.Schema({
         type: String, 
         required : [true, "Event {PATH} is required"]
     }, 
-    tasks: []
+    tasks: [
+        {
+            content: String
+        }
+    ]
 }, {timestamps: true})
 
 const List = mongoose.model("List", ListSchema);

@@ -8,23 +8,20 @@ import InputContainer from './InputContainer';
 
 
 const List = ({list}) => {
-
-
     console.log(list);
-    console.log(list.title);
     console.log(list.tasks);
+
     return (
         <div >
             <Card  className={"card"}>
                 <CssBaseline/>
                 <Title title={list.title}/>
-                {
-                    list.tasks.map( (task, i) => {
-                        return(
-                            <Task key={task._id} task={task}/>
-                        )
-                    })
-                }
+                {list.tasks.map( (task) => {
+                    return(
+                        <Task key={task.id} task={task}/>
+                    )
+                })}
+
                 <div></div>
                 <InputContainer/>
             </Card>

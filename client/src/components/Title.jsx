@@ -14,7 +14,6 @@ const Title = ({title}) => {
                 open ?(
                     <div className={"input"}>
                         <InputBase value={title}
-                       
                         fullWidth
                         onBlur={ () => setOpen(!open)}/>
                     </div>
